@@ -130,12 +130,12 @@
           <div class="card">
             <div class="card-body">
             <!-- Edit Form -->
-                  <form>
+                  <form method="post" action="CRUD/create_delivery.php">
                     <br>
                     <div class="row mb-3">
                       <label for="customer-name" class="col-md-4 col-lg-3 col-form-label">Cliente</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="customar-name" type="text" class="form-control" id="customer-name">
+                        <input name="customar-name" type="text" class="form-control" id="customer-name" required>
                       </div>
                     </div>
 
@@ -149,28 +149,16 @@
                     <div class="row mb-3">
                       <label for="from" class="col-md-4 col-lg-3 col-form-label">Ponto de coleta</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="from" type="text" class="form-control" id="from">
+                        <input name="from" type="text" class="form-control" id="from" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="to" class="col-md-4 col-lg-3 col-form-label">Ponto de destino</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="to" type="text" class="form-control" id="to">
+                        <input name="to" type="text" class="form-control" id="to" required>
                       </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <label for="status" class="col-md-4 col-lg-3 col-form-label">Status</label>
-                        <div class="col-md-8 col-lg-9">
-                          <select name="status" class="form-select" aria-label="Default select example">
-                            <option value="1">Novo</option>
-                            <option value="2">Entregando</option>
-                            <option value="3">Finalizado</option>
-                            <option value="4">Cancelada</option>
-                          </select>
-                        </div>
-                      </div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Salvar</button>
