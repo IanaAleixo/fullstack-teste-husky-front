@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar entrega</title>
+  <title>Editar entrega</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
   
@@ -28,8 +28,8 @@
      <!-- Template Main CSS File -->
      <link href="assets/css/style.css" rel="stylesheet">
 
-      <!-- jQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <!-- jQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    
      <!-- =======================================================
      * Template Name: NiceAdmin - v2.2.0
@@ -116,12 +116,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar entrega</h1>
+      <h1>Editar entrega</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item"><a href="deliveries.html">Entregas</a></li>
-          <li class="breadcrumb-item active">Adicionar</li>
+          <li class="breadcrumb-item active">Alterar status</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -133,26 +133,23 @@
           <div class="card">
             <div class="card-body">
             <!-- Edit Form -->
-                  <form method="post" action="CRUD/create_delivery.php">
+                  <form id="form-edit" method="post">
                     <br>
-                    <span id="content"></span>
                     <div class="row mb-3">
-                      <label for="from" class="col-md-4 col-lg-3 col-form-label">Ponto de coleta</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="from" type="text" class="form-control" id="from" required>
+                        <label for="status" class="col-md-4 col-lg-3 col-form-label">Status</label>
+                        <div class="col-md-8 col-lg-9">
+                          <select name="status" class="form-select" aria-label="Default select example">
+                            <option value="1">Novo</option>
+                            <option value="2">Entregando</option>
+                            <option value="3">Finalizado</option>
+                            <option value="4">Cancelada</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="to" class="col-md-4 col-lg-3 col-form-label">Ponto de destino</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="to" type="text" class="form-control" id="to" required>
+  
+                      <div class="text-center">
+                        <button type="submit" id="btn-submit" class="btn btn-primary">Salvar</button>
                       </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
                   </form><!-- End Edit Form -->
               </div>
             </div>
@@ -165,7 +162,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Husky Tecnologia</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Husky Logística</span></strong>. All Rights Reserved
     </div>
   </footer><!-- End Footer -->
 
@@ -185,11 +182,12 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    $(document).ready(function (){
-      $.post('CRUD/list_customers_deliveryman.php', function(retorno){
-        $("#content").html(retorno)
-      });
-    });
+      const urlParams = new URLSearchParams(window.location.search);
+      const cod = urlParams.get('cod');
+      console.log(cod)
+      document.getElementById('btn-submit').onclick = function(){
+        document.getElementById('form-edit').action = "CRUD/update_status.php?cod="+cod;
+      }  
   </script>
 
 </body>
